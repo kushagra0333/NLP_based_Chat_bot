@@ -3,13 +3,10 @@ import random
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split
-import pandas as pd
-import os
 import csv
 import datetime
 import pathlib
+import os
 
 with open('intents.json') as file:
     data = json.load(file)
