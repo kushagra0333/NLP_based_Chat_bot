@@ -1,0 +1,108 @@
+[
+    {
+        "tag": "greeting",
+        "patterns": [
+            "Hi",
+            "Hello",
+            "Hey",
+            "Good morning",
+            "Good evening"
+        ],
+        "responses": [
+            "Hello! How can I assist you with your bus booking today?",
+            "Hi there! How can I help you?"
+        ]
+    },
+    {
+        "tag": "book_ticket",
+        "patterns": [
+            "I want to book a bus ticket",
+            "Can I book a bus ticket?",
+            "How do I book a bus ticket?",
+            "Book a bus ticket for me"
+        ],
+        "responses": [
+            "Sure! I can help you with booking a bus ticket. Please provide the details such as departure city, destination city, and travel date.",
+            "To book a bus ticket, I need the departure city, destination city, and travel date. Could you please provide those details?"
+        ]
+    },
+    {
+        "tag": "check_schedule",
+        "patterns": [
+            "Check bus schedule",
+            "Bus schedule for today",
+            "What are the bus timings?",
+            "Show me the bus schedule"
+        ],
+        "responses": [
+            "Please provide the departure city and destination city to check the bus schedule.",
+            "I can help you with the bus schedule. Could you please provide the departure and destination cities?"
+        ]
+    },
+    {
+        "tag": "cancel_ticket",
+        "patterns": [
+            "Cancel my bus ticket",
+            "I need to cancel my ticket",
+            "How can I cancel my bus ticket?",
+            "Cancel a bus ticket"
+        ],
+        "responses": [
+            "I'm sorry to hear that you need to cancel your ticket. Please provide your booking reference number to proceed with the cancellation.",
+            "To cancel your bus ticket, I need your booking reference number. Could you please provide it?"
+        ]
+    },
+    {
+        "tag": "refund",
+        "patterns": [
+            "How do I get a refund?",
+            "Refund for my canceled ticket",
+            "Refund process",
+            "Get a refund for a bus ticket"
+        ],
+        "responses": [
+            "Refunds are processed within 5-7 business days after cancellation. Please provide your booking reference number to check the status.",
+            "To process a refund, I need your booking reference number. Could you please provide it?"
+        ]
+    },
+    {
+        "tag": "fare_inquiry",
+        "patterns": [
+            "How much is the bus fare?",
+            "Bus fare from city A to city B",
+            "Ticket price for bus",
+            "Fare details"
+        ],
+        "responses": [
+            "Please provide the departure city and destination city to check the bus fare.",
+            "I can help you with the fare details. Could you please provide the cities you are traveling between?"
+        ]
+    },
+    {
+        "tag": "goodbye",
+        "patterns": [
+            "Bye",
+            "Goodbye",
+            "See you later",
+            "Thank you, goodbye"
+        ],
+        "responses": [
+            "Goodbye! Have a great day!",
+            "See you later! If you need any further assistance, feel free to ask."
+        ]
+    },
+    {
+        "tag": "how_are_you",
+        "patterns": [
+            "How are you?",
+            "How's it going?",
+            "How have you been?",
+            "How are you doing?"
+        ],
+        "responses": [
+            "I'm just a chatbot, but I'm here to help you with your bus booking needs! How can I assist you today?",
+            "I'm doing great, thank you! How can I help you with your bus booking?",
+            "I'm here and ready to assist you with your travel plans! What do you need help with?"
+        ]
+    }
+]
