@@ -8,14 +8,16 @@ import datetime
 import pathlib
 import os
 
+# Load intents file
 with open('intents.json') as file:
     data = json.load(file)
-    print("data extraction successful")
+    print("Data extraction successful")
 
+# Initialize vectorizer and classifier
 vectorizer = TfidfVectorizer()
 clf = LogisticRegression(random_state=0, max_iter=1000)
 
-# preprocessing the data
+# Preprocess the data
 tags = []
 patterns = []
 for intent in data:
@@ -23,13 +25,13 @@ for intent in data:
         tags.append(intent['tag'])
         patterns.append(pattern)
 
-# training the model
+# Train the model
 x = vectorizer.fit_transform(patterns)
 y = tags
 clf.fit(x, y)
 
 def chatbot(input_text):
-    # predicting the tag
+    # Predicting the tag
     input_text = vectorizer.transform([input_text])
     tag = clf.predict(input_text)[0]
     for intent in data:
@@ -38,31 +40,27 @@ def chatbot(input_text):
 
 counter = 0
 
- # Function to load CSS 
+# Function to load CSS
 def load_css(file_path):
-     with open(file_path) as f:
-         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    with open(file_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-
- # Load the external CSS
+# Load the external CSS
 css_path = pathlib.Path("style.css")
 load_css(css_path)
-
-
-
 
 def main():
     global counter
     st.image('image.webp', width=500)
     st.title("CUSTOMER SUPPORT")
-    # creating sidebar options
+    # Creating sidebar options
     menu = ["Home", "Conversation History", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
-    # home page
+    # Home page
     if choice == 'Home':
         st.write('Welcome to the customer support, please enter your message here')
-        # check if chat_log file exists
+        # Check if chat_log file exists
         if not os.path.exists('chat_log.csv'):
             with open('chat_log.csv', 'w', newline='', encoding='utf-8') as csvfile:
                 writer = csv.writer(csvfile)
@@ -71,15 +69,15 @@ def main():
         user_input = st.text_input("USER:", key=f'user_input{counter}')
 
         if user_input:
-            # convert user input to string
+            # Convert user input to string
             user_input_str = str(user_input)
             response = chatbot(user_input_str)
             st.text_area("ChatBot:", value=response, height=120, max_chars=None, key=f"response{counter}")
 
-            # get the current timestamp
+            # Get the current timestamp
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-            # save the user input and chatbot response to the chat_log.csv file
+            # Save the user input and chatbot response to the chat_log.csv file
             with open('chat_log.csv', 'a', newline='', encoding='utf-8') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow([user_input_str, response, timestamp])
@@ -87,7 +85,7 @@ def main():
                 st.write("Thank you for chatting with me. Have a good day!")
                 st.stop()
 
-    # conversation history
+    # Conversation history
     elif choice == 'Conversation History':
         st.header("Conversation History")
         with open('chat_log.csv', 'r', encoding='utf-8') as csvfile:
@@ -99,7 +97,7 @@ def main():
                 st.text(f'Timestamp: {row[2]}')
                 st.markdown("---")
 
-    # about page
+    # About page
     elif choice == "About":
         st.header("About")
         st.write("""
@@ -130,7 +128,7 @@ def main():
         If you have any feedback or questions about our chatbot, feel free to reach out to us. We are always looking to improve and appreciate your input.
 
         Thank you for using our Intent-Based Chatbot. We hope it makes your experience enjoyable and efficient!
-    """)
+        """)
         
 if __name__ == '__main__':
     main()
