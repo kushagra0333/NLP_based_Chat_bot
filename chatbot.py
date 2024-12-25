@@ -11,7 +11,6 @@ import os
 # Load intents file
 with open('intents.json') as file:
     data = json.load(file)
-    print("Data extraction successful")
 
 # Initialize vectorizer and classifier
 vectorizer = TfidfVectorizer()
