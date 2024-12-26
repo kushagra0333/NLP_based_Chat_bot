@@ -84,7 +84,6 @@ def main():
         if os.path.exists('chat_log.csv'):
             with open('chat_log.csv', 'r', encoding='utf-8') as csvfile:
                 csv_reader = csv.reader(csvfile)
-                next(csv_reader)
                 for row in csv_reader:
                     st.text(f'User: {row[0]}')
                     st.text(f'ChatBot: {row[1]}')
@@ -93,7 +92,8 @@ def main():
         else:
             st.write("No conversation history found.")
 
-    # About page
+
+
     # About page
     elif choice == "About":
          st.header("About")
