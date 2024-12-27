@@ -157,7 +157,7 @@ This chatbot helps you with bus bookings, cancellations, payment info, and more.
 ### Contact Us:
 Feel free to reach out for any inquiries or feedback.
 
-    Thank you for using our Intent-Based Chatbot. We hope it makes your experience enjoyable and efficient!
+Thank you for using our Intent-Based Chatbot. We hope it makes your experience enjoyable and efficient!
     """)
 
 if __name__ == '__main__':
