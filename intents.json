@@ -13,6 +13,99 @@
             "Hi there! How can I help you?"
         ]
     },
+          {
+            "tag": "find_nearest_bus_stop",
+            "patterns": [
+              "Where is the nearest bus stop?",
+              "Find the closest bus stop",
+              "Nearest bus stop to me",
+              "Closest bus station",
+              "Locate nearest bus stop",
+              "Bus stop near my location",
+              "Where can I catch a bus nearby?",
+              "Show me the nearest bus stop",
+              "Find bus stop near me"
+            ],
+            "responses": [
+              "Sure! Could you please provide your current location or share your address?",
+              "I'd be happy to help. Can you tell me your current location?",
+              "To find the nearest bus stop, I need your current location. Could you please share it with me?",
+              "Please provide your current location or the name of your area to find the closest bus stop.",
+              "I can help you find the nearest bus stop. Where are you currently located?",
+              "To assist you better, could you share your current location or the nearest landmark?",
+              "I'm sorry, I need your current location to find the nearest bus stop. Can you please share it?",
+              "Would you like to share your location so I can find the nearest bus stop for you?",
+              "Would you like me to save this location for future searches?",
+              "I see you previously searched for bus stops near your home. Would you like to search near the same location again?",
+              "The nearest bus stop is 500 meters away at [location]. The next bus arrives in 10 minutes.",
+              "You can find the nearest bus stop at [address]. Would you like directions to get there?"
+            ]
+          },
+          {
+            "tag": "find_bus_stops_near_destination",
+            "patterns": [
+              "Find bus stops near [destination]",
+              "Nearest bus stop to [destination]",
+              "Bus stops around [destination]",
+              "Show bus stops near [destination]",
+              "Closest bus station to [destination]"
+            ],
+            "responses": [
+              "Could you please provide your current location as well to find the best route to [destination]?",
+              "I can help with that. What's your starting point?",
+              "Please share your current location so I can find the nearest bus stops to [destination].",
+              "To find bus stops near [destination], I need your starting address.",
+              "Where are you currently located? I'll find the nearest bus stops to [destination] for you."
+            ]
+          },
+          {
+            "tag": "find_bus_routes",
+            "patterns": [
+              "Find bus routes",
+              "Show bus routes",
+              "Bus routes near me",
+              "Locate bus routes",
+              "Find bus routes around here",
+              "Show me the bus routes",
+              "Bus routes in this area"
+            ],
+            "responses": [
+              "Sure! Could you please provide your current location or share your address?",
+              "I'd be happy to help. Can you tell me your current location?",
+              "To find bus routes, I need your current location. Could you please share it with me?",
+              "Please provide your current location or the name of your area to find the bus routes.",
+              "I can help you find bus routes. Where are you currently located?",
+              "To assist you better, could you share your current location or the nearest landmark?",
+              "I'm sorry, I need your current location to find the bus routes. Can you please share it?",
+              "Would you like to share your location so I can find the bus routes for you?",
+              "Would you like me to save this location for future searches?",
+              "I see you previously searched for bus routes near your home. Would you like to search near the same location again?",
+              "The bus route to [destination] is available from [bus stop]. The next bus arrives in 10 minutes.",
+              "You can find the bus route to [destination] at [bus stop]. Would you like directions to get there?"
+            ]
+          },
+          {
+            "tag": "find_bus_routes_to_destination",
+            "patterns": [
+              "Find bus routes to [destination]",
+              "Show bus routes to [destination]",
+              "Bus routes to [destination]",
+              "Locate bus routes to [destination]",
+              "Find bus routes to reach [destination]",
+              "Show me the bus routes to [destination]",
+              "Bus routes to reach [destination]"
+            ],
+            "responses": [
+              "Could you please provide your current location as well to find the best route to [destination]?",
+              "I can help with that. What's your starting point?",
+              "Please share your current location so I can find the bus routes to [destination].",
+              "To find bus routes to [destination], I need your starting address.",
+              "Where are you currently located? I'll find the bus routes to [destination] for you."
+            ]
+          },
+      
+      
+      
     {
         "tag": "book_ticket",
         "patterns": [
