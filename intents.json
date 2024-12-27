@@ -13,6 +13,33 @@
             "Hi there! How can I help you?"
         ]
     },
+    {
+        "tag": "fare_inquiry",
+        "patterns": [
+            "What is the fare from {source} to {destination}?",
+            "How much is the fare?",
+            "What will be the fare?",
+            "Tell me the fare",
+            "How much does it cost to travel from {source} to {destination}?"
+        ],
+        "responses": [
+            "The fare from {source} to {destination} is approximately X amount.",
+            "It will cost around X amount to travel from {source} to {destination}.",
+            "The fare to travel from {source} to {destination} is approximately X amount."
+        ]
+    },
+    {
+        "tag": "find_bus_routes",
+        "patterns": [
+            "from {source} to {destination}",
+            "find me a bus from {source} to {destination}",
+            "show bus routes from {source} to {destination}"
+        ],
+        "responses": [
+            "Great! You are traveling from {source} to {destination}. I will find the best bus routes for you.",
+            "I will find the best bus routes from {source} to {destination} for you."
+        ]
+    },
           {
             "tag": "find_nearest_bus_stop",
             "patterns": [
