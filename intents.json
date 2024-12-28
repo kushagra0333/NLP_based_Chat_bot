@@ -14,162 +14,128 @@
         ]
     },
     {
+        "tag": "ticket_confirmation",
+        "patterns": [
+            "I have provided the details",
+            "I want to confirm my ticket",
+            "Confirm my booking",
+            "Ticket details are ready"
+        ],
+        "responses": [
+            "Your ticket for {passengers} persons to travel from {source} to {destination} on {date} is almost ready. To complete the booking, please proceed with the payment.",
+            "Your bus ticket from {source} to {destination} for {passengers} passengers on {date} is almost completed. Kindly complete the payment to confirm your booking.",
+            "Thank you for providing the details. Your ticket from {source} to {destination} for {passengers} passengers on {date} is ready. Please complete the payment to finalize your booking."
+        ]
+    },
+        
+    {
         "tag": "fare_inquiry",
         "patterns": [
             "What is the fare from {source} to {destination}?",
-            "How much is the fare?",
-            "What will be the fare?",
-            "Tell me the fare",
+            "How much is the fare from {source} to {destination}?",
+            "What will be the fare from {source} to {destination}?",
+            "Tell me the fare from {source} to {destination}",
             "How much does it cost to travel from {source} to {destination}?"
         ],
         "responses": [
-            "The fare from {source} to {destination} is approximately X amount.",
-            "It will cost around X amount to travel from {source} to {destination}.",
-            "The fare to travel from {source} to {destination} is approximately X amount."
+            "The fare from {source} to {destination} is approximately {fare} INR.",
+            "It will cost around {fare} INR to travel from {source} to {destination}.",
+            "The fare to travel from {source} to {destination} is approximately {fare} INR."
         ]
     },
     {
-        "tag": "find_bus_routes",
+        "tag": "bus_schedule",
         "patterns": [
-            "from {source} to {destination}",
-            "find me a bus from {source} to {destination}",
-            "show bus routes from {source} to {destination}"
+            "What is the bus schedule from {source} to {destination}?",
+            "Tell me the bus timings from {source} to {destination}",
+            "What are the bus timings for the route {source} to {destination}?",
+            "Bus schedule from {source} to {destination}",
+            "Bus timings from {source} to {destination}"
         ],
         "responses": [
-            "Great! You are traveling from {source} to {destination}. I will find the best bus routes for you.",
-            "I will find the best bus routes from {source} to {destination} for you."
+            "The bus schedule from {source} to {destination} is as follows: {timings}.",
+            "The bus timings for the route {source} to {destination} are: {timings}.",
+            "Here are the bus timings from {source} to {destination}: {timings}."
         ]
     },
-          {
-            "tag": "find_nearest_bus_stop",
-            "patterns": [
-              "Where is the nearest bus stop?",
-              "Find the closest bus stop",
-              "Nearest bus stop to me",
-              "Closest bus station",
-              "Locate nearest bus stop",
-              "Bus stop near my location",
-              "Where can I catch a bus nearby?",
-              "Show me the nearest bus stop",
-              "Find bus stop near me"
-            ],
-            "responses": [
-              "Sure! Could you please provide your current location or share your address?",
-              "I'd be happy to help. Can you tell me your current location?",
-              "To find the nearest bus stop, I need your current location. Could you please share it with me?",
-              "Please provide your current location or the name of your area to find the closest bus stop.",
-              "I can help you find the nearest bus stop. Where are you currently located?",
-              "To assist you better, could you share your current location or the nearest landmark?",
-              "I'm sorry, I need your current location to find the nearest bus stop. Can you please share it?",
-              "Would you like to share your location so I can find the nearest bus stop for you?",
-              "Would you like me to save this location for future searches?",
-              "I see you previously searched for bus stops near your home. Would you like to search near the same location again?",
-              "The nearest bus stop is 500 meters away at [location]. The next bus arrives in 10 minutes.",
-              "You can find the nearest bus stop at [address]. Would you like directions to get there?"
-            ]
-          },
-          {
-            "tag": "find_bus_stops_near_destination",
-            "patterns": [
-              "Find bus stops near [destination]",
-              "Nearest bus stop to [destination]",
-              "Bus stops around [destination]",
-              "Show bus stops near [destination]",
-              "Closest bus station to [destination]"
-            ],
-            "responses": [
-              "Could you please provide your current location as well to find the best route to [destination]?",
-              "I can help with that. What's your starting point?",
-              "Please share your current location so I can find the nearest bus stops to [destination].",
-              "To find bus stops near [destination], I need your starting address.",
-              "Where are you currently located? I'll find the nearest bus stops to [destination] for you."
-            ]
-          },
-          {
-            "tag": "find_bus_routes",
-            "patterns": [
-              "Find bus routes",
-              "Show bus routes",
-              "Bus routes near me",
-              "Locate bus routes",
-              "Find bus routes around here",
-              "Show me the bus routes",
-              "Bus routes in this area"
-            ],
-            "responses": [
-              "Sure! Could you please provide your current location or share your address?",
-              "I'd be happy to help. Can you tell me your current location?",
-              "To find bus routes, I need your current location. Could you please share it with me?",
-              "Please provide your current location or the name of your area to find the bus routes.",
-              "I can help you find bus routes. Where are you currently located?",
-              "To assist you better, could you share your current location or the nearest landmark?",
-              "I'm sorry, I need your current location to find the bus routes. Can you please share it?",
-              "Would you like to share your location so I can find the bus routes for you?",
-              "Would you like me to save this location for future searches?",
-              "I see you previously searched for bus routes near your home. Would you like to search near the same location again?",
-              "The bus route to [destination] is available from [bus stop]. The next bus arrives in 10 minutes.",
-              "You can find the bus route to [destination] at [bus stop]. Would you like directions to get there?"
-            ]
-          },
-          {
-            "tag": "find_bus_routes_to_destination",
-            "patterns": [
-              "Find bus routes to [destination]",
-              "Show bus routes to [destination]",
-              "Bus routes to [destination]",
-              "Locate bus routes to [destination]",
-              "Find bus routes to reach [destination]",
-              "Show me the bus routes to [destination]",
-              "Bus routes to reach [destination]"
-            ],
-            "responses": [
-              "Could you please provide your current location as well to find the best route to [destination]?",
-              "I can help with that. What's your starting point?",
-              "Please share your current location so I can find the bus routes to [destination].",
-              "To find bus routes to [destination], I need your starting address.",
-              "Where are you currently located? I'll find the bus routes to [destination] for you."
-            ]
-          },
-      
-      
-      
     {
         "tag": "book_ticket",
         "patterns": [
-            "I want to book a bus ticket",
-            "Can I book a bus ticket?",
-            "How do I book a bus ticket?",
-            "Book a bus ticket for me"
+            "I want to book a bus ticket from {source} to {destination}",
+            "Book a ticket from {source} to {destination}",
+            "Can you help me book a ticket from {source} to {destination}?",
+            "I need to book a ticket from {source} to {destination}"
         ],
         "responses": [
-            "Sure! I can help you with booking a bus ticket. Please provide the details such as departure city, destination city, and travel date.",
-            "To book a bus ticket, I need the departure city, destination city, and travel date. Could you please provide those details?"
-        ]
-    },
-    {
-        "tag": "check_schedule",
-        "patterns": [
-            "Check bus schedule",
-            "Bus schedule for today",
-            "What are the bus timings?",
-            "Show me the bus schedule"
-        ],
-        "responses": [
-            "Please provide the departure city and destination city to check the bus schedule.",
-            "I can help you with the bus schedule. Could you please provide the departure and destination cities?"
+            "Sure! I can help you with booking a bus ticket from {source} to {destination}. Please provide the travel date and number of passengers.",
+            "To book a bus ticket from {source} to {destination}, I need the travel date and number of passengers. Please provide those details."
         ]
     },
     {
         "tag": "cancel_ticket",
         "patterns": [
-            "Cancel my bus ticket",
-            "I need to cancel my ticket",
-            "How can I cancel my bus ticket?",
-            "Cancel a bus ticket"
+            "I want to cancel my bus ticket",
+            "Can you help me cancel my ticket?",
+            "How do I cancel my bus ticket?",
+            "I need to cancel my ticket"
         ],
         "responses": [
             "I'm sorry to hear that you need to cancel your ticket. Please provide your booking reference number to proceed with the cancellation.",
             "To cancel your bus ticket, I need your booking reference number. Could you please provide it?"
+        ]
+    },
+    {
+        "tag": "find_nearest_bus_stop",
+        "patterns": [
+            "Where is the nearest bus stop?",
+            "Find the closest bus stop",
+            "Nearest bus stop to me",
+            "Closest bus station",
+            "Locate nearest bus stop",
+            "Bus stop near my location",
+            "Where can I catch a bus nearby?",
+            "Show me the nearest bus stop",
+            "Find bus stop near me"
+        ],
+        "responses": [
+            "Sure! Could you please provide your current location or share your address?",
+            "I'd be happy to help. Can you tell me your current location?",
+            "To find the nearest bus stop, I need your current location. Could you please share it with me?",
+            "Please provide your current location or the name of your area to find the closest bus stop.",
+            "I can help you find the nearest bus stop. Where are you currently located?",
+            "To assist you better, could you share your current location or the nearest landmark?",
+            "I'm sorry, I need your current location to find the nearest bus stop. Can you please share it?",
+            "Would you like to share your location so I can find the nearest bus stop for you?",
+            "Would you like me to save this location for future searches?",
+            "I see you previously searched for bus stops near your home. Would you like to search near the same location again?",
+            "The nearest bus stop is 500 meters away at [location]. The next bus arrives in 10 minutes.",
+            "You can find the nearest bus stop at [address]. Would you like directions to get there?"
+        ]
+    },
+    {
+        "tag": "find_bus_routes",
+        "patterns": [
+            "Find bus routes",
+            "Show bus routes",
+            "Bus routes near me",
+            "Locate bus routes",
+            "Find bus routes around here",
+            "Show me the bus routes",
+            "Bus routes in this area"
+        ],
+        "responses": [
+            "Sure! Could you please provide your current location or share your address?",
+            "I'd be happy to help. Can you tell me your current location?",
+            "To find bus routes, I need your current location. Could you please share it with me?",
+            "Please provide your current location or the name of your area to find the bus routes.",
+            "I can help you find bus routes. Where are you currently located?",
+            "To assist you better, could you share your current location or the nearest landmark?",
+            "I'm sorry, I need your current location to find the bus routes. Can you please share it?",
+            "Would you like to share your location so I can find the bus routes for you?",
+            "Would you like me to save this location for future searches?",
+            "I see you previously searched for bus routes near your home. Would you like to search near the same location again?",
+            "The bus route to [destination] is available from [bus stop]. The next bus arrives in 10 minutes.",
+            "You can find the bus route to [destination] at [bus stop]. Would you like directions to get there?"
         ]
     },
     {
@@ -183,19 +149,6 @@
         "responses": [
             "Refunds are processed within 5-7 business days after cancellation. Please provide your booking reference number to check the status.",
             "To process a refund, I need your booking reference number. Could you please provide it?"
-        ]
-    },
-    {
-        "tag": "fare_inquiry",
-        "patterns": [
-            "How much is the bus fare?",
-            "Bus fare from city A to city B",
-            "Ticket price for bus",
-            "Fare details"
-        ],
-        "responses": [
-            "Please provide the departure city and destination city to check the bus fare.",
-            "I can help you with the fare details. Could you please provide the cities you are traveling between?"
         ]
     },
     {

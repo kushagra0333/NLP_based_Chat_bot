@@ -8,10 +8,9 @@ import datetime
 import os
 import re
 
-
 # Load intents file
 with open('intents.json') as file:
-    data = json.load(file)  # data is now a list of intents, not a dictionary with 'intents'
+    data = json.load(file)  
 
 # Initialize vectorizer and classifier
 vectorizer = TfidfVectorizer()
@@ -20,7 +19,7 @@ clf = LogisticRegression(random_state=0, max_iter=1000)
 # Preprocess the data
 tags = []
 patterns = []
-for intent in data:  # Loop directly over the list (data is already a list of intent objects)
+for intent in data: 
     for pattern in intent['patterns']:
         tags.append(intent['tag'])
         patterns.append(pattern)
@@ -33,15 +32,53 @@ clf.fit(x, y)
 # Function to extract source and destination from user input
 def extract_locations(input_text):
     # Regular expression to extract source and destination, e.g., "from Noida to New Delhi"
-    match = re.search(r"from\s(\w+(\s\w+)*)\sto\s(\w+(\s\w+)*)", input_text, re.IGNORECASE)
+    match = re.search(r"from\s([\w\s]+)\sto\s([\w\s]+)", input_text, re.IGNORECASE)
     if not match:
         # If "from to" format doesn't work, try a more general pattern like "travel Noida to Delhi"
-        match = re.search(r"travel\s(\w+(\s\w+)*)\sto\s(\w+(\s\w+)*)", input_text, re.IGNORECASE)
+        match = re.search(r"travel\s([\w\s]+)\sto\s([\w\s]+)", input_text, re.IGNORECASE)
     
     if match:
-        return match.group(1), match.group(3)
+        return match.group(1), match.group(2)  # Return both source and destination as strings
     return None, None
 
+# Mock function to get distance between two locations (in km)
+def get_distance(source, destination):
+    # This is a mock function. Replace it with an actual implementation if needed.
+    distances = {
+        ("Noida", "New Delhi"): 25,
+        ("Noida", "Gurgaon"): 35,
+        ("Noida", "Ghaziabad"): 15,
+        ('noida', 'delhi'): 20,
+        ('mumbai', 'delhi'): 1400,
+        ('bangalore', 'mumbai'): 980,
+        ('kolkata', 'delhi'): 1500,
+        ('chennai', 'bangalore'): 350,
+        ('pune', 'mumbai'): 150,
+        ('hyderabad', 'bangalore'): 570,
+        ('jaipur', 'delhi'): 280,
+        ('lucknow', 'delhi'): 550,
+        ('ahmedabad', 'mumbai'): 530,
+        ('bhopal', 'delhi'): 770,
+        ('kochi', 'chennai'): 700,
+        ('nagpur', 'mumbai'): 820,
+        ('patna', 'kolkata'): 580,
+        ('chandigarh', 'delhi'): 240,
+        ('goa', 'mumbai'): 590,
+        ('kanpur', 'delhi'): 480,
+        ('surat', 'mumbai'): 290,
+        ('indore', 'mumbai'): 585,
+        ('agra', 'delhi'): 210,
+        ('varanasi', 'delhi'): 835,
+        ('amritsar', 'delhi'): 450,
+        ('jodhpur', 'jaipur'): 340,
+        ('coimbatore', 'chennai'): 510,
+        ('visakhapatnam', 'hyderabad'): 620,
+        ('udaipur', 'jaipur'): 395,
+        ('guwahati', 'kolkata'): 990,
+        ('madurai', 'chennai'): 460
+        # Add more mock distances as needed
+    }
+    return distances.get((source, destination), random.randint(10, 50))
 
 def chatbot(input_text):
     # Extract source and destination
@@ -52,13 +89,15 @@ def chatbot(input_text):
     tag = clf.predict(input_text_transformed)[0]
     
     # Generate response
-    for intent in data:  # Loop over the list of intents
+    for intent in data:  
         if intent['tag'] == tag:
             response = random.choice(intent['responses'])
             
             # Replace placeholders with actual values
             if source and destination:
-                response = response.replace('{source}', source).replace('{destination}', destination)
+                distance = get_distance(source, destination)
+                fare = distance * 9  # 9 Rs per km
+                response = response.replace('{source}', source).replace('{destination}', destination).replace('{fare}', str(fare))
             elif destination:
                 response = response.replace('{destination}', destination)
             
@@ -86,6 +125,8 @@ def main():
     # Initialize session state for user input
     if 'user_input' not in st.session_state:
         st.session_state.user_input = ''
+    if 'response' not in st.session_state:
+        st.session_state.response = ''
 
     # Home page
     if choice == 'Home':
@@ -114,11 +155,11 @@ def main():
         st.text_input("USER:", key="user_input", on_change=on_input_change)
 
         # Display the chatbot's response
-        if 'response' in st.session_state:
+        if st.session_state.response:
             st.text_area("ChatBot:", value=st.session_state.response, height=120, max_chars=None)
 
         # Show goodbye message when the user says goodbye
-        if 'response' in st.session_state and st.session_state.response.lower() in ['goodbye', 'bye']:
+        if st.session_state.response.lower() in ['goodbye', 'bye']:
             st.write("Thank you for chatting with me. Have a good day!")
             st.stop()
 
