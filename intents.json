@@ -27,7 +27,7 @@
             "Thank you for providing the details. Your ticket from {source} to {destination} for {passengers} passengers on {date} is ready. Please complete the payment to finalize your booking."
         ]
     },
-        
+
     {
         "tag": "fare_inquiry",
         "patterns": [
@@ -58,19 +58,7 @@
             "Here are the bus timings from {source} to {destination}: {timings}."
         ]
     },
-    {
-        "tag": "book_ticket",
-        "patterns": [
-            "I want to book a bus ticket from {source} to {destination}",
-            "Book a ticket from {source} to {destination}",
-            "Can you help me book a ticket from {source} to {destination}?",
-            "I need to book a ticket from {source} to {destination}"
-        ],
-        "responses": [
-            "Sure! I can help you with booking a bus ticket from {source} to {destination}. Please provide the travel date and number of passengers.",
-            "To book a bus ticket from {source} to {destination}, I need the travel date and number of passengers. Please provide those details."
-        ]
-    },
+   
     {
         "tag": "cancel_ticket",
         "patterns": [

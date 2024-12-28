@@ -41,6 +41,22 @@ def extract_locations(input_text):
         return match.group(1), match.group(2)  # Return both source and destination as strings
     return None, None
 
+# Function to extract date and number of passengers from the user input
+def extract_date_and_passengers(input_text):
+    # Regex pattern for extracting date (assumes format dd/mm/yyyy or mm/dd/yyyy)
+    date_pattern = r"\b(\d{1,2}\/\d{1,2}\/\d{4})\b"
+    passengers_pattern = r"\b(\d+)\s*(persons|people)\b"
+    
+    # Extract date
+    date_match = re.search(date_pattern, input_text)
+    date = date_match.group(1) if date_match else None
+    
+    # Extract number of passengers
+    passengers_match = re.search(passengers_pattern, input_text)
+    passengers = int(passengers_match.group(1)) if passengers_match else None
+    
+    return date, passengers
+
 # Mock function to get distance between two locations (in km)
 def get_distance(source, destination):
     # This is a mock function. Replace it with an actual implementation if needed.
@@ -80,9 +96,13 @@ def get_distance(source, destination):
     }
     return distances.get((source, destination), random.randint(10, 50))
 
+# Function to handle chatbot responses
 def chatbot(input_text):
     # Extract source and destination
     source, destination = extract_locations(input_text)
+    
+    # Extract date and passengers
+    date, passengers = extract_date_and_passengers(input_text)
     
     # Predicting the tag
     input_text_transformed = vectorizer.transform([input_text])
@@ -98,8 +118,11 @@ def chatbot(input_text):
                 distance = get_distance(source, destination)
                 fare = distance * 9  # 9 Rs per km
                 response = response.replace('{source}', source).replace('{destination}', destination).replace('{fare}', str(fare))
-            elif destination:
-                response = response.replace('{destination}', destination)
+            
+            # If it's the ticket confirmation intent, add the travel date and number of passengers
+            if tag == "ticket_confirmation":
+                if date and passengers:
+                    response = response.replace("{date}", date).replace("{passengers}", str(passengers))
             
             return response
     
