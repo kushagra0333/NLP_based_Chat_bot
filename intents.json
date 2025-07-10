@@ -246,7 +246,21 @@
     "Each passenger is allowed up to 20 kg of check-in luggage and one small cabin bag.",
     "You can carry one cabin bag and up to 20 kg of luggage per person. Extra charges may apply for excess baggage."
   ]
+},
+    {
+  "tag": "payment_methods",
+  "patterns": [
+    "What payment methods do you accept?",
+    "Can I pay via UPI?",
+    "Do you accept credit cards?",
+    "Available payment options"
+  ],
+  "responses": [
+    "We accept UPI, credit/debit cards, net banking, and popular wallets for payment.",
+    "Yes, you can pay using UPI, cards, net banking, or wallets like Paytm and PhonePe."
+  ]
 }
+
 
 
 ]
